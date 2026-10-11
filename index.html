@@ -1,0 +1,1249 @@
+<html lang="vi"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="LixVIP Pro">
+<title>𝐋𝐢𝐱𝐕𝐈𝐏 𝐏𝐫𝐨</title>
+
+<style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top,#0b0b18,#05060d);
+  color:#fff;
+  padding-bottom:140px;
+  overflow-x:hidden;
+}
+
+/* ===== APP ===== */
+.app{
+  max-width:480px;
+  margin:auto;
+  min-height:100vh;
+  position:relative;
+}
+
+.app::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,0,140,0.12), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(0,200,255,0.08), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(255,0,200,0.10), transparent 50%);
+  pointer-events:none;
+}
+
+/* =========================
+   FIX TAB PAUSE ANIMATION
+========================= */
+
+.page{
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+
+  transform:translateY(10px);
+  transition:.2s ease;
+}
+
+.page.active{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+
+  transform:translateY(0);
+  position:relative;
+}
+
+/* ===== HEADER ===== */
+.header-card{
+  background:linear-gradient(135deg,#2a0f1f,#1a1a2e);
+  border-radius:25px;
+  padding:20px;
+  border:1px solid rgba(255,80,160,.25);
+  box-shadow:0 0 25px rgba(255,0,120,.35);
+  margin-bottom:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.header-card::after{
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background:radial-gradient(circle,rgba(255,0,150,.25),transparent 60%);
+  animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+.header-card span{
+  font-size:12px;
+  color:#ff7ac6;
+}
+
+.header-card h1{
+  font-size:32px;
+  font-weight:800;
+  margin-top:10px;
+  color:#fff;
+  text-shadow:0 0 10px #ff2f92;
+}
+
+/* ===== PROFILE ===== */
+.profile-card{
+  display:flex;
+  align-items:center;
+  background:linear-gradient(135deg,#151522,#1c1020);
+  padding:15px;
+  border-radius:25px;
+  margin-bottom:20px;
+  border:1px solid rgba(255,0,140,.15);
+  box-shadow:0 0 18px rgba(255,0,120,.15);
+}
+
+.profile-card img{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  border:2px solid #ff4fbf;
+  box-shadow:0 0 10px #ff2f92;
+}
+
+.info{
+  flex:1;
+  margin-left:15px;
+}
+
+.info h2{font-size:20px;}
+.info p{color:#aaa;font-size:13px;}
+
+.zalo-btn{
+  background:linear-gradient(135deg,#ff2f92,#ff5cc8);
+  border:none;
+  padding:12px 18px;
+  border-radius:15px;
+  color:white;
+  font-weight:bold;
+  box-shadow:0 0 15px rgba(255,0,140,.4);
+}
+
+/* ===== SOCIAL ===== */
+.setting-card{
+  background:#141422;
+  padding:20px;
+  border-radius:25px;
+  border:1px solid rgba(255,0,140,.15);
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.pink{color:#ff4fbf;}
+.gold{color:#ffb3e6;}
+.blue{color:#6fd0ff;}
+
+/* ===== FUNC ===== */
+.func-card{
+  display:flex;
+  align-items:center;
+  background:linear-gradient(135deg,#161625,#1a1020);
+  padding:15px;
+  border-radius:25px;
+  margin-bottom:15px;
+  border:1px solid rgba(255,0,140,.12);
+  transition:0.15s ease;
+}
+
+.func-card:hover{
+  box-shadow:0 0 18px rgba(255,0,140,.25);
+  transform:translateY(-2px);
+}
+
+.icon{
+  width:50px;
+  height:50px;
+  border-radius:18px;
+  background:radial-gradient(circle,#ff2f92,#1d2430);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:25px;
+}
+
+.content{
+  flex:1;
+  margin-left:15px;
+}
+
+.content h2{font-size:15px;}
+.content p{font-size:12px;color:#aaa;margin-top:4px;}
+
+/* ===== SWITCH ===== */
+.switch{
+  position:relative;
+  width:62px;
+  height:32px;
+}
+
+.switch input{display:none;}
+
+.slider{
+  position:absolute;
+  inset:0;
+  background:#222;
+  border-radius:40px;
+  transition:.25s;
+}
+
+.slider:before{
+  content:"";
+  position:absolute;
+  width:26px;
+  height:26px;
+  left:3px;
+  top:3px;
+  background:#bbb;
+  border-radius:50%;
+  transition:.25s;
+}
+
+.switch input:checked + .slider{
+  background:linear-gradient(135deg,#ff2f92,#ff5cc8);
+}
+
+.switch input:checked + .slider:before{
+  transform:translateX(30px);
+  background:white;
+}
+
+/* ===== GAME SELECT ===== */
+.game-select{
+  display:flex;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.game-box{
+  flex:1;
+  background:linear-gradient(135deg,#141422,#1a1020);
+  padding:15px;
+  border-radius:25px;
+  text-align:center;
+  border:1px solid rgba(255,0,140,.12);
+  transition:0.15s ease;
+  overflow:hidden;
+}
+
+.game-box img{
+  width:55px;
+  height:55px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 8px;
+  filter:drop-shadow(0 0 6px rgba(255,0,140,.35));
+}
+
+.game-box.active{
+  border:2px solid #ff2f92;
+  box-shadow:0 0 15px rgba(255,0,140,.4);
+}
+
+/* ===== BOOST ===== */
+.boost-card{
+  background:linear-gradient(135deg,#141422,#1a1020);
+  padding:20px;
+  border-radius:25px;
+}
+
+.booster-btn{
+  width:100%;
+  height:55px;
+  border:none;
+  background:linear-gradient(135deg,#ff2f92,#ff5cc8);
+  border-radius:20px;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+  margin:20px 0;
+}
+
+/* ===== SLIDER ===== */
+.slider-item{
+  margin-top:20px;
+  font-size:14px;
+}
+
+.slider-item input{
+  width:100%;
+  accent-color:#ff2f92;
+}
+
+.slider-item .val{
+  float:right;
+  color:#ff5cc8;
+  font-weight:bold;
+}
+
+/* ===== STAT BOX ===== */
+.stat-box{
+  background:linear-gradient(135deg,#141422,#1a1020);
+  padding:15px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-height:70px;
+}
+
+.stat-box > div{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.stat-box .icon{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.stat-box b{
+  font-size:16px;
+}
+
+.stat-box .switch{
+  margin-left:auto;
+  flex-shrink:0;
+}
+
+/* ===== GRAPH ===== */
+.graph-box{
+  height:160px;
+  background:#0b0b12;
+  border-radius:20px;
+  margin-top:15px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,0,140,.3);
+  box-shadow:0 0 18px rgba(255,0,140,.3);
+}
+
+.graph-box::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:repeating-linear-gradient(
+    115deg,
+    transparent 0px,
+    rgba(255,0,140,0.25) 10px,
+    rgba(255,255,255,0.08) 12px,
+    transparent 14px
+  );
+  animation:lightningMove 1.2s linear infinite;
+}
+
+@keyframes lightningMove{
+  0%{transform:translateX(-20%) rotate(10deg);}
+  100%{transform:translateX(20%) rotate(10deg);}
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:20px;
+  width:95%;
+  max-width:480px;
+  height:75px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  background:linear-gradient(135deg,#141422,#1a1020);
+  border-radius:25px;
+}
+
+.navbar button{
+  flex:1;
+  background:none;
+  border:none;
+  color:white;
+}
+
+/* ===== TOAST ===== */
+.toast{
+  position:fixed;
+  bottom:110px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(20,10,30,0.95);
+  padding:12px 18px;
+  border-radius:14px;
+  opacity:0;
+}
+
+button, .game-box, .func-card{
+  transition:0.12s ease;
+}
+
+button:active,
+.game-box:active,
+.func-card:active{
+  transform:scale(0.97);
+  filter:brightness(1.15);
+}
+
+#keyInput{
+  font-size:16px;
+}
+
+/* BLUE NEON OVERRIDE */
+.app::before{
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,191,255,.12), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(0,191,255,.08), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(0,191,255,.10), transparent 50%) !important;
+}
+
+.header-card{
+  border:1px solid rgba(0,191,255,.25) !important;
+  box-shadow:0 0 25px rgba(0,191,255,.35) !important;
+}
+
+.header-card::after{
+  background:radial-gradient(circle,rgba(0,191,255,.25),transparent 60%) !important;
+}
+
+.header-card span{color:#66e6ff !important;}
+.header-card h1{
+  color:#fff !important;
+  text-shadow:0 0 10px #00cfff,0 0 20px #00cfff,0 0 35px #00cfff !important;
+}
+
+.profile-card{
+  border:1px solid rgba(0,191,255,.15) !important;
+  box-shadow:0 0 18px rgba(0,191,255,.15) !important;
+}
+.profile-card img{
+  border:2px solid #00cfff !important;
+  box-shadow:0 0 12px #00cfff !important;
+}
+
+.zalo-btn, .booster-btn{
+  background:linear-gradient(135deg,#009dff,#00cfff) !important;
+  box-shadow:0 0 15px rgba(0,191,255,.45) !important;
+}
+
+.setting-card{border:1px solid rgba(0,191,255,.15) !important;}
+.func-card{border:1px solid rgba(0,191,255,.12) !important;}
+.func-card:hover{box-shadow:0 0 18px rgba(0,191,255,.25) !important;}
+.icon{background:radial-gradient(circle,#00cfff,#1d2430) !important;}
+.switch input:checked + .slider{background:linear-gradient(135deg,#009dff,#00cfff) !important;}
+.game-box{border:1px solid rgba(0,191,255,.12) !important;}
+.game-box img{filter:drop-shadow(0 0 6px rgba(0,191,255,.45)) !important;}
+.game-box.active{
+  border:2px solid #00cfff !important;
+  box-shadow:0 0 18px rgba(0,191,255,.55) !important;
+}
+.slider-item input{accent-color:#00cfff !important;}
+.slider-item .val{color:#00cfff !important;}
+.pink{color:#00cfff !important;}
+.gold{color:#66e6ff !important;}
+.graph-box{
+  border:1px solid rgba(0,191,255,.3) !important;
+  box-shadow:0 0 18px rgba(0,191,255,.3) !important;
+}
+.graph-box::before{
+  background:repeating-linear-gradient(
+    115deg,
+    transparent 0px,
+    rgba(0,191,255,.25) 10px,
+    rgba(255,255,255,.08) 12px,
+    transparent 14px
+  ) !important;
+}
+
+#keyScreen > div{
+  border:1px solid rgba(0,191,255,.3) !important;
+  box-shadow:0 0 25px rgba(0,191,255,.25) !important;
+}
+#keyScreen button{
+  background:linear-gradient(135deg,#009dff,#00cfff) !important;
+}
+
+#circle{
+  border:6px solid #00cfff !important;
+  color:#00cfff !important;
+  box-shadow:0 0 10px #00cfff,0 0 20px rgba(0,191,255,.8),0 0 35px rgba(0,191,255,.6),inset 0 0 12px rgba(0,191,255,.35) !important;
+}
+
+#funcName{color:#00cfff !important;text-shadow:0 0 8px rgba(0,191,255,.8);}
+#gameTitle{color:#00cfff !important;text-shadow:0 0 10px #00cfff,0 0 20px rgba(0,191,255,.7);}
+#gameInfo{color:#66e6ff !important;}
+.boost-card{
+  border:1px solid rgba(0,191,255,.2) !important;
+  box-shadow:0 0 20px rgba(0,191,255,.15) !important;
+}
+
+.header-card h1,#gameTitle{
+  color:#fff;
+  text-shadow:0 0 3px rgba(0,191,255,.5),0 0 8px rgba(0,191,255,.3);
+}
+
+.info h2,.content h2,#funcName,.stat-box b,#circle{
+  color:#fff;
+  text-shadow:0 0 2px rgba(0,191,255,.4),0 0 6px rgba(0,191,255,.25);
+}
+
+.header-card span,.row b,.slider-item .val,.blue,.pink,.gold{
+  text-shadow:0 0 2px rgba(0,191,255,.35);
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:15px;
+}
+
+@media(max-width:420px){
+  .stats-grid{grid-template-columns:1fr;}
+}
+
+.graph-box{
+  position:relative;
+  height:180px;
+  margin-top:15px;
+  overflow:hidden;
+}
+
+.graph-box canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+.spark-line{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:.95;
+}
+
+.spark-line svg{width:100%;height:100%;display:block;}
+
+.spark-path{
+  fill:none;
+  stroke:#00cfff;
+  stroke-width:1.4;
+  stroke-linecap:butt;
+  stroke-linejoin:miter;
+  filter:drop-shadow(0 0 3px #00cfff) drop-shadow(0 0 8px #00cfff);
+  stroke-dasharray:220;
+  stroke-dashoffset:220;
+  animation:zigzagMove 1.6s linear infinite;
+}
+
+@keyframes zigzagMove{
+  from{stroke-dashoffset:220;}
+  to{stroke-dashoffset:0;}
+}
+
+.navbar{
+  z-index:999;
+  border:1px solid rgba(0,191,255,.15);
+  box-shadow:0 0 20px rgba(0,191,255,.15),inset 0 0 10px rgba(0,191,255,.05);
+}
+
+.navbar button{
+  height:100%;
+  color:#a8b4d0;
+  border-radius:20px;
+  transition:.25s;
+}
+
+.navbar button p{font-size:11px;margin-top:2px;}
+
+.navbar button.active{
+  color:#00cfff;
+  text-shadow:0 0 6px #00cfff,0 0 12px #00cfff;
+}
+
+.navbar button.active::before{
+  content:"";
+  position:absolute;
+  width:40px;
+  height:4px;
+  border-radius:20px;
+  background:#00cfff;
+  bottom:8px;
+  left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 0 10px #00cfff;
+}
+
+.toast{
+  min-width:220px;
+  text-align:center;
+  border:1px solid rgba(0,191,255,.25);
+  box-shadow:0 0 15px rgba(0,191,255,.25),inset 0 0 8px rgba(0,191,255,.08);
+  transition:.25s ease;
+  backdrop-filter:blur(10px);
+}
+
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-thumb{background:#00cfff;border-radius:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+
+.page{animation:fadePage .25s ease;}
+
+@keyframes fadePage{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.func-card,.stat-box,.setting-card,.boost-card{
+  backdrop-filter:blur(8px);
+}
+
+.func-card:hover,.stat-box:hover{
+  border-color:rgba(0,191,255,.35);
+  box-shadow:0 0 15px rgba(0,191,255,.2),inset 0 0 10px rgba(0,191,255,.05);
+}
+
+.header-card,.profile-card,.setting-card,.func-card,.boost-card,.stat-box,.navbar{
+  background:rgba(15,20,35,.72) !important;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+
+.header-card,.profile-card,.setting-card,.func-card,.boost-card,.stat-box{
+  border:1px solid rgba(255,255,255,.08) !important;
+}
+
+.func-card,.stat-box,.game-box{transition:.25s ease;}
+.func-card:hover,.stat-box:hover,.game-box:hover{transform:translateY(-4px);}
+
+.header-card{overflow:hidden;}
+
+.header-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.08),transparent);
+  transform:translateX(-100%);
+  animation:shine2 4s infinite;
+}
+
+@keyframes shine2{100%{transform:translateX(200%);}}
+
+.profile-card img{width:72px;height:72px;}
+
+.zalo-btn,.booster-btn{position:relative;overflow:hidden;}
+
+.zalo-btn::before,.booster-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.2),transparent);
+  transform:translateX(-150%);
+  animation:btnshine 3s infinite;
+}
+
+@keyframes btnshine{100%{transform:translateX(200%);}}
+
+.game-box{position:relative;}
+
+.game-box.active::after{
+  content:"✓";
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:#00cfff;
+  color:#fff;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 10px #00cfff;
+}
+
+.slider-item input{height:6px;}
+
+.slider-item input::-webkit-slider-thumb{
+  appearance:none;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#00cfff;
+  box-shadow:0 0 10px #00cfff,0 0 20px #00cfff;
+}
+
+.navbar{
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(30px);
+}
+
+.navbar button{position:relative;}
+.navbar button.active{background:rgba(0,191,255,.08);}
+
+.func-card,.stat-box,.game-box,.profile-card,.setting-card{
+  animation:cardFade .4s ease;
+}
+
+@keyframes cardFade{
+  from{opacity:0;transform:translateY(15px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.func-card:hover,.stat-box:hover,.setting-card:hover,.profile-card:hover{
+  box-shadow:0 0 20px rgba(0,191,255,.15),0 0 40px rgba(0,191,255,.08);
+}
+
+#circle{animation:pulseCircle 2s infinite;}
+
+@keyframes pulseCircle{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+  100%{transform:scale(1);}
+}
+
+.app{max-width:420px;padding:0 10px;}
+
+.header-card,.profile-card,.setting-card,.func-card,.boost-card,.stat-box{
+  border-radius:18px;
+  padding:12px !important;
+}
+
+.page{padding:10px;}
+.func-card{margin-bottom:10px;}
+.icon{width:42px !important;height:42px !important;font-size:18px !important;}
+.header-card h1{font-size:24px !important;}
+.info h2,.content h2{font-size:14px !important;}
+.profile-card img{width:60px;height:60px;}
+
+.zalo-btn,.booster-btn{
+  height:46px;
+  font-size:14px;
+  border-radius:14px;
+}
+
+.game-box{padding:10px;}
+.game-box img{width:45px;height:45px;}
+.slider-item{font-size:13px;}
+.slider-item input{height:4px;}
+.stat-box{min-height:60px;padding:10px !important;}
+.navbar{height:65px;bottom:10px;}
+
+.zalo-btn{
+  padding:8px 12px !important;
+  font-size:11px !important;
+  border-radius:10px !important;
+  box-shadow:0 0 8px rgba(0,191,255,.25) !important;
+  min-width:70px;
+  height:32px;
+}
+</style>
+</head>
+
+<body>
+<!-- KEY LOGIN SCREEN -->
+<div id="keyScreen" style="
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at top,#0b0b18,#05060d);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+">
+
+  <div style="
+    width:90%;
+    max-width:350px;
+    background:#141422;
+    padding:25px;
+    border-radius:20px;
+    border:1px solid rgba(255,0,140,.3);
+    box-shadow:0 0 25px rgba(255,0,140,.25);
+    text-align:center;
+  ">
+
+    <h2 style="margin-bottom:10px;">🔐 XÁC MINH KEY</h2>
+    <p style="color:#aaa;font-size:13px;margin-bottom:15px;">
+      Vui lòng nhập key để vào hệ thống
+    </p>
+
+    <input id="keyInput" type="password" placeholder="Nhập key..." style="
+        width:100%;
+        padding:12px;
+        border-radius:12px;
+        border:none;
+        outline:none;
+        margin-bottom:15px;
+      ">
+
+    <button id="keyBtn" onclick="checkKey()" style="
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:12px;
+      background:linear-gradient(135deg,#ff2f92,#ff5cc8);
+      color:white;
+      font-weight:bold;
+    ">
+      Xác Nhận
+    </button>
+
+    <p id="keyMsg" style="margin-top:10px;color:red;font-size:12px;min-height:18px;"></p>
+
+  </div>
+</div>
+
+<div class="app">
+
+<!-- HOME -->
+<div class="page active" id="home">
+
+  <div class="header-card">
+    <span>𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗠𝗢𝗕𝗜𝗟𝗘 𝗗𝗔𝗦𝗛𝗕𝗢𝗔𝗥𝗗</span>
+    <h1>- [ ] 𝐋𝐢𝐱𝐕𝐈𝐏 𝐏𝐫𝐨</h1>
+  </div>
+
+  <div class="profile-card">
+    <img src="https://i.postimg.cc/50BRg9hG/IMG-0114.jpg" alt="avatar">
+    <div class="info">
+      <h2>𝐋𝐢𝐱𝐕𝐈𝐏 𝐏𝐫𝐨</h2>
+      <p>𝗔𝗱𝗺𝗶𝗻 / 𝗛𝗼̂̃ 𝗧𝗿𝗼̛̣ 𝟮𝟰/𝟳 / 𝗔𝗽𝗽 𝗣𝗮𝗻𝗲𝗹</p>
+    </div>
+    <button class="zalo-btn">𝑂𝑁𝐿𝐼𝑁𝐸</button>
+  </div>
+
+  <div class="setting-card">
+    <div class="row"><span>𝐋𝐢𝐱𝐕𝐈𝐏 𝐏𝐫𝐨</span><b>𝐋𝐢𝐱𝐕𝐈𝐏 𝐏𝐫𝐨</b></div>
+    <div class="row"><span>𝗔𝗱𝗺𝗶𝗻</span><b>𝐋𝐢𝐱𝐕𝐈𝐏 𝐏𝐫𝐨</b></div>
+    <div class="row"><span>Đ𝗶𝗲̂̀𝘂 𝗛𝘂̛𝗼̛́𝗻𝗴</span><b>𝟰 𝗧𝗮𝗯</b></div>
+    <div class="row"><span>𝗕𝗼𝗼𝘀𝘁𝗲𝗿 𝗠𝗮̣̆𝗰 Đ𝗶̣𝗻𝗵</span><b>𝟭𝟬𝟬%</b></div>
+    <div class="row"><span>𝗚𝗶𝗮𝗼 𝗗𝗶𝗲̣̂𝗻</span><b class="pink">𝗫𝗮𝗻𝗵 𝗕𝗶𝗲̂̉𝗻 𝗡𝗲𝗼𝗻 </b></div>
+    <div class="row"><span>𝗚𝗮𝗺𝗲 𝗛𝗼̂̃ 𝗧𝗿𝗼̛̣</span><b class="gold">𝗙𝗿𝗲𝗲 𝗙𝗶𝗿𝗲 / 𝗙𝗿𝗲𝗲 𝗙𝗶𝗿𝗲 𝗠𝗮𝘅</b></div>
+    <div class="row"><span>𝗡𝗴𝗼̂𝗻 𝗡𝗴𝘂̛̃</span><b class="blue">𝗧𝗶𝗲̂́𝗻𝗴 𝗩𝗶𝗲̣̂𝘁</b></div>
+  </div>
+</div>
+
+<!-- FUNC -->
+<div class="page" id="func">
+  <div class="header-card">
+    <span>𝗦𝗬𝗦𝗧𝗘𝗠 𝗖𝗢𝗡𝗧𝗥𝗢𝗟</span>
+    <h1>𝐋𝐢𝐱𝐕𝐈𝐏 𝐏𝐫𝐨</h1>
+  </div>
+
+  <div class="func-card"><div class="icon">🎯</div><div class="content"><h2>𝗔𝗜𝗠𝗟𝗢𝗖𝗞</h2><p>𝗕𝗮́𝗺 Đ𝗮̂̀𝘂 𝗧𝗵𝗼̂𝗻𝗴 𝗠𝗶𝗻𝗵 - 𝗔𝗜 𝗧𝘂̛̣ Đ𝗼̣̂𝗻𝗴 𝗖𝗮̆𝗻 𝗖𝗵𝘂𝗮̂̉𝗻 Đ𝗶𝗲̂̉𝗺 𝗡𝗴𝗮̆́𝗺 𝗩𝗮̀𝗼 Đ𝗮̂̀𝘂 𝗠𝘂̣𝗰 𝗧𝗶𝗲̂𝘂</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">⚡</div><div class="content"><h2>𝗦𝗧𝗔𝗕𝗜𝗟𝗜𝗧𝗬 𝗔𝗦𝗦𝗜𝗦𝗧</h2><p>𝗡𝗵𝗲̣ 𝗧𝗮̂𝗺 - 𝗢̂̉𝗻 Đ𝗶̣𝗻𝗵 Đ𝘂̛𝗼̛̀𝗻𝗴 𝗡𝗴𝗮̆́𝗺</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">🛡️</div><div class="content"><h2>𝗔𝗜𝗠 𝗟𝗢𝗖𝗞𝗗𝗢𝗪𝗡</h2><p>Đ𝗮̂̀𝗺 𝗧𝗮̂𝗺 - 𝗞𝗵𝗼𝗮́ 𝗩𝗶̣ 𝗧𝗿𝗶́ 𝗡𝗴𝗮̆́𝗺</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">📡</div><div class="content"><h2>𝗔𝗜𝗠 𝗛𝗢𝗟𝗗</h2><p>𝗚𝗵𝗶𝗺 𝗧𝗮̂𝗺 - 𝗞𝗵𝗼𝗮́ 𝗩𝗶̣ 𝗧𝗿𝗶́ 𝗡𝗴𝗮̆́𝗺</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">🎮</div><div class="content"><h2>𝗦𝗘𝗡𝗩𝗜𝗕𝗜𝗧𝗬 𝗕𝗢𝗢𝗦𝗧𝗘𝗥</h2><p>𝗡𝗵𝗮̣𝘆 - 𝗧𝗮̆𝗻𝗴 Đ𝗼̣̂ 𝗡𝗵𝗮̣𝘆 𝗖𝗮̉𝗺 𝗨̛́𝗻𝗴</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">🔥</div><div class="content"><h2>𝗦𝗖𝗥𝗘𝗘𝗡 𝗕𝗢𝗢𝗦𝗧𝗘𝗥</h2><p>𝗕𝘂𝗳𝗳 𝗠𝗮̀𝗻 - 𝗡𝗮̂𝗻𝗴 𝗖𝗮𝗼 𝗖𝗵𝗮̂́𝘁 𝗟𝘂̛𝗼̛̣𝗻𝗴 𝗛𝗶̀𝗻𝗵 𝗔̉𝗻𝗵</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">🎯</div><div class="content"><h2>𝗛𝗘𝗔𝗗𝗦𝗛𝗢𝗧 𝗙𝗜𝗫</h2><p>𝗙𝗶𝘅 𝗟𝗼̂́ Đ𝗮̂̀𝘂 - 𝗛𝗶𝗲̣̂𝘂 𝗖𝗵𝗶̉𝗻𝗵 𝗦𝗮𝗶 𝗦𝗼̂́ Đ𝗶𝗲̂̉𝗺 𝗡𝗴𝗮̆́𝗺</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">📈</div><div class="content"><h2>𝗦𝗛𝗔𝗞𝗘 𝗙𝗜𝗫</h2><p>Đ𝗮̣𝗻 𝗧𝗵𝗮̆̉𝗻𝗴 - 𝗢̂̉𝗻 Đ𝗶̣𝗻𝗵 Đ𝘂̛𝗼̛̀𝗻𝗴 Đ𝗮̣𝗻</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">🧠</div><div class="content"><h2>𝗗𝗥𝗜𝗙𝗧 𝗙𝗜𝗫</h2><p>𝗞𝗵𝗼𝗮́ 𝗠𝘂̣𝗰 𝗧𝗶𝗲̂𝘂 - 𝗞𝗵𝗼𝗮́ 𝗩𝗶̣ 𝗧𝗿𝗶́ 𝗡𝗴𝗮̆́𝗺</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  <div class="func-card"><div class="icon">🚀</div><div class="content"><h2>𝗕𝗨𝗟𝗟𝗘𝗧 𝗔𝗟𝗜𝗚𝗡</h2><p>𝗖𝗮̆𝗻 𝗖𝗵𝗶̉𝗻𝗵 Đ𝗮̣𝗻 - 𝗙𝗶𝘅 𝗟𝗮̣𝗰 Đ𝗮̣𝗻</p></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+</div>
+
+<div class="page" id="boost">
+  <div class="game-select">
+    <div class="game-box active" onclick="selectGame('ff')">
+      <img src="https://i.postimg.cc/0yJZXysT/IMG-3297.jpg">
+      𝑭𝑹𝑬𝑬 𝑭𝑰𝑹𝑬
+    </div>
+    <div class="game-box" onclick="selectGame('ffmax')">
+      <img src="https://i.postimg.cc/bwBHQGF7/IMG-3298.jpg">
+      𝑭𝑹𝑬𝑬 𝑭𝑰𝑹𝑬 𝑴𝑨𝑿
+    </div>
+  </div>
+
+  <div class="boost-card">
+    <h1 id="gameTitle">𝑭𝑹𝑬𝑬 𝑭𝑰𝑹𝑬</h1>
+    <p style="color:#aaa;margin-bottom:10px;">𝑮𝒂𝒎𝒆 đ𝒂̃ 𝒄𝒉𝒐̣𝒏: <span id="gameInfo">𝑭𝑹𝑬𝑬 𝑭𝑰𝑹𝑬</span></p>
+
+    <div style="display:flex;align-items:center;gap:20px;">
+      <div style="width:90px;height:90px;border-radius:50%;border:6px solid #ff4477;display:flex;align-items:center;justify-content:center;font-size:20px;" id="circle">0%</div>
+      <div>
+        <b id="funcName">𝗔𝗜𝗠𝗟𝗢𝗖𝗞</b><br>
+        <span style="color:#aaa">𝗕𝗼𝗼𝘀𝘁 𝗹𝗲𝘃𝗲𝗹</span>
+      </div>
+    </div>
+
+    <button class="booster-btn" onclick="openSelectedGame()">𝗕𝗢𝗢𝗦𝗧𝗘𝗥</button>
+
+    <div class="slider-item">𝗔𝗜𝗠𝗟𝗢𝗖𝗞 <span class="val">0%</span><input type="range" min="0" max="100" value="0" oninput="updateBoost(this,'AIMLOCK')"></div>
+    <div class="slider-item">𝗦𝗧𝗔𝗕𝗜𝗟𝗜𝗧𝗬 𝗔𝗦𝗦𝗜𝗦𝗧 <span class="val">0%</span><input type="range" min="0" max="100" value="0" oninput="updateBoost(this,'STABILITY ASSIST')"></div>
+    <div class="slider-item">𝗔𝗜𝗠 𝗛𝗢𝗟𝗗 <span class="val">0%</span><input type="range" min="0" max="100" value="0" oninput="updateBoost(this,'AIM HOLD')"></div>
+    <div class="slider-item">𝗛𝗘𝗔𝗗𝗦𝗛𝗢𝗧 𝗙𝗜𝗫 <span class="val">0%</span><input type="range" min="0" max="100" value="0" oninput="updateBoost(this,'HEADSHOT FIX')"></div>
+    <div class="slider-item">𝗕𝗨𝗟𝗟𝗘𝗧 𝗔𝗟𝗜𝗚𝗡 <span class="val">0%</span><input type="range" min="0" max="100" value="0" oninput="updateBoost(this,'BULLET ALIGN')"></div>
+  </div>
+</div>
+
+<div class="page" id="live">
+  <div class="header-card"><h1>𝐋𝐢𝐱𝐕𝐈𝐏 𝐏𝐫𝐨</h1></div>
+
+  <div class="stats-grid">
+    <div class="stat-box func-toggle" data-key="fps"><div class="icon">📊</div><div><div>𝗙𝗣𝗦</div><b id="fps">0</b></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+    <div class="stat-box func-toggle" data-key="frame"><div class="icon">⏱️</div><div><div>𝗙𝗥𝗔𝗠𝗘</div><b id="frame">16ms</b></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+    <div class="stat-box func-toggle" data-key="cpu"><div class="icon">🧠</div><div><div>𝗖𝗣𝗨</div><b id="cpu">0%</b></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+    <div class="stat-box func-toggle" data-key="ram"><div class="icon">💾</div><div><div>𝗥𝗔𝗠</div><b id="ram">0MB</b></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+  </div>
+
+  <div class="graph-box">
+    <canvas id="chart1"></canvas>
+    <div class="spark-line"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="spark-path" d="M0,60 L10,30 L20,80 L30,25 L40,70 L50,35 L60,75 L70,40 L80,65 L90,30 L100,55" stroke-dasharray="200"></path></svg></div>
+  </div>
+
+  <div class="graph-box">
+    <canvas id="chart2"></canvas>
+    <div class="spark-line"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path class="spark-path" d="M0,50 L10,75 L20,35 L30,80 L40,30 L50,70 L60,25 L70,60 L80,35 L90,70 L100,45" stroke-dasharray="200"></path></svg></div>
+  </div>
+</div>
+
+<div class="navbar">
+  <button class="active" onclick="openTab('home',this)">🏡<p>𝑻𝒓𝒂𝒏𝒈 𝑪𝒉𝒖̉</p></button>
+  <button onclick="openTab('func',this)">📱<p>𝑪𝒉𝒖̛́𝒄 𝑵𝒂̆𝒏𝒈</p></button>
+  <button onclick="openTab('boost',this)">🎮<p>𝑮𝒂𝒎𝒆</p></button>
+  <button onclick="openTab('live',this)">♻️<p>𝑫𝒐̣𝒏 𝑹𝒂́𝒄</p></button>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+// =====================
+// 🔐 CẤU HÌNH SERVER JSONBIN
+// =====================
+var BIN_ID = "6acb8513ffd5d16053616641";
+var MASTER_KEY = "$2a$10$nlZ11WF1121izBLfZBClx.v8H4x0ctBz1ThSjt7zUWmGISJUXOMs.";
+var API = "https://api.jsonbin.io/v3/b/" + BIN_ID;
+
+function getDeviceUID(){
+  var uid = localStorage.getItem("device_uid");
+  if(!uid){
+    uid = "UID-" + Math.random().toString(36).slice(2,12).toUpperCase();
+    localStorage.setItem("device_uid", uid);
+  }
+  return uid;
+}
+
+
+// CHECK KEY QUA SERVER JSONBIN
+async function checkKey(){
+  var input = document.getElementById("keyInput").value.trim();
+  var msg = document.getElementById("keyMsg");
+  var btn = document.getElementById("keyBtn");
+
+  if(!input){
+    msg.innerText = "❌ Vui lòng nhập key!";
+    return;
+  }
+
+  msg.style.color = "#66e6ff";
+  msg.innerText = "⏳ Đang xác thực...";
+  btn.disabled = true;
+  btn.innerText = "Đang kiểm tra...";
+
+  var uid = getDeviceUID();
+
+  try {
+    var r = await fetch(API + "/latest", {
+      headers: {"X-Master-Key": MASTER_KEY}
+    });
+    var data = await r.json();
+    var keys = (data.record && data.record.keys) ? data.record.keys : [];
+
+    var item = null;
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i].key === input) { item = keys[i]; break; }
+    }
+
+    if (!item) {
+      fail("❌ Key không tồn tại");
+      return;
+    }
+
+    if (item.expiresAt && Date.now() > item.expiresAt) {
+      fail("❌ Key đã hết hạn");
+      return;
+    }
+
+    if (!item.usedBy) item.usedBy = [];
+
+    if (item.usedBy.indexOf(uid) > -1) {
+      success();
+      return;
+    }
+
+    if (item.maxUses === 1 && item.usedBy.length >= 1) {
+      fail("❌ Key đã dùng cho thiết bị khác");
+      return;
+    }
+
+    if (item.maxUses > 1 && item.usedBy.length >= item.maxUses) {
+      fail("❌ Key đã hết slot");
+      return;
+    }
+
+    item.usedBy.push(uid);
+
+    await fetch(API, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key": MASTER_KEY
+      },
+      body: JSON.stringify({keys: keys})
+    });
+
+    success();
+
+  } catch (err) {
+    fail("❌ Lỗi kết nối: " + err.message);
+  }
+
+  function success(){
+    
+    document.getElementById("keyScreen").style.display = "none";
+    btn.disabled = false;
+    btn.innerText = "Xác Nhận";
+    showToast("✅ Xác thực thành công");
+  }
+
+  function fail(text){
+    msg.style.color = "#ff5757";
+    msg.innerText = text;
+    btn.disabled = false;
+    btn.innerText = "Xác Nhận";
+  }
+}
+
+// =====================
+// 🔊 SOUND SYSTEM
+// =====================
+let beepEnabled = true;
+let audioUnlocked = false;
+
+const beepAudio = new Audio("https://actions.google.com/sounds/v1/alarms/beep_short.ogg");
+beepAudio.volume = 0.6;
+
+function unlockAudio(){
+  if(audioUnlocked) return;
+  beepAudio.play()
+    .then(function(){
+      beepAudio.pause();
+      beepAudio.currentTime = 0;
+      audioUnlocked = true;
+    })
+    .catch(function(){ audioUnlocked = true; });
+}
+
+document.addEventListener("click", unlockAudio, {once:true});
+document.addEventListener("touchstart", unlockAudio, {once:true});
+document.addEventListener("keydown", unlockAudio, {once:true});
+
+function beep(){
+  if(!beepEnabled || !audioUnlocked) return;
+  try{
+    var s = new Audio(beepAudio.src);
+    s.volume = 0.6;
+    s.play().catch(function(){});
+  }catch(e){}
+}
+
+var sliderSounds = [
+  "https://actions.google.com/sounds/v1/alarms/beep_short.ogg",
+  "https://actions.google.com/sounds/v1/alarms/beep_short.ogg",
+  "https://actions.google.com/sounds/v1/alarms/beep_short.ogg",
+  "https://actions.google.com/sounds/v1/alarms/beep_short.ogg",
+  "https://actions.google.com/sounds/v1/alarms/beep_short.ogg"
+];
+
+function sliderBeep(index){
+  if(!audioUnlocked) return;
+  var src = sliderSounds[index] || sliderSounds[0];
+  try{
+    var s = new Audio(src);
+    s.preload = "auto";
+    s.volume = 0.05 + (index * 0.02);
+    s.playbackRate = 0.95 + (index * 0.03);
+    s.play().catch(function(){});
+  }catch(e){}
+}
+
+// =====================
+// 📊 STATE LIVE
+// =====================
+var statState = { fps: false, frame: false, cpu: false, ram: false };
+
+// =====================
+// 🧭 TAB SYSTEM
+// =====================
+function openTab(id, btn){
+  beep();
+  document.querySelectorAll(".page").forEach(function(p){ p.classList.remove("active"); });
+  var page = document.getElementById(id);
+  if(page) page.classList.add("active");
+  document.querySelectorAll(".navbar button").forEach(function(b){ b.classList.remove("active"); });
+  if(btn) btn.classList.add("active");
+}
+
+// =====================
+// 🎮 GAME SELECT
+// =====================
+var currentGame = "ff";
+
+function selectGame(game){
+  currentGame = game;
+  beep();
+  var boxes = document.querySelectorAll(".game-box");
+  boxes.forEach(function(b){ b.classList.remove("active"); });
+  if(game === "ff"){
+    if(boxes[0]) boxes[0].classList.add("active");
+    document.getElementById("gameTitle").innerText = "FREE FIRE";
+    document.getElementById("gameInfo").innerText = "Free Fire";
+  } else {
+    if(boxes[1]) boxes[1].classList.add("active");
+    document.getElementById("gameTitle").innerText = "FREE FIRE MAX";
+    document.getElementById("gameInfo").innerText = "Free Fire Max";
+  }
+}
+
+// =====================
+// 📈 BOOST UPDATE
+// =====================
+function updateBoost(range, name){
+  var val = range.value;
+  var label = range.parentElement.querySelector(".val");
+  if(label) label.innerText = val + "%";
+  document.getElementById("circle").innerText = val + "%";
+  document.getElementById("funcName").innerText = name;
+
+  var order = ["AIMLOCK","STABILITY ASSIST","AIM HOLD","HEADSHOT FIX","BULLET ALIGN"];
+  var index = order.indexOf(name);
+  sliderBeep(index);
+}
+
+// =====================
+// 🎛️ SWITCH SYSTEM
+// =====================
+document.querySelectorAll(".switch input").forEach(function(sw){
+  sw.addEventListener("change", function(){
+    beep();
+    var card = this.closest(".func-card") || this.closest(".func-toggle");
+    if(!card) return;
+    var labelEl = card.querySelector("h2");
+    var label = labelEl ? labelEl.innerText : "Chức năng";
+    if(this.checked){
+      showToast("🟢 Đã bật " + label);
+    } else {
+      showToast("🔴 Đã tắt " + label);
+    }
+    if(card.classList.contains("func-toggle")){
+      var key = card.dataset.key;
+      statState[key] = this.checked;
+      var valueEl = card.querySelector("b");
+      if(!this.checked && valueEl){
+        valueEl.innerText = "--";
+      }
+    }
+  });
+});
+
+// =====================
+// 📊 LIVE UPDATE LOOP
+// =====================
+setInterval(function(){
+  if(statState.fps){
+    document.getElementById("fps").innerText = Math.floor(55 + Math.random()*10);
+  } else {
+    document.getElementById("fps").innerText = "0";
+  }
+  if(statState.frame){
+    var fps = Math.floor(55 + Math.random()*10);
+    document.getElementById("frame").innerText = (1000/fps).toFixed(1) + "ms";
+  } else {
+    document.getElementById("frame").innerText = "0ms";
+  }
+  if(statState.cpu){
+    document.getElementById("cpu").innerText = Math.floor(Math.random()*10) + "%";
+  } else {
+    document.getElementById("cpu").innerText = "0%";
+  }
+  if(statState.ram){
+    document.getElementById("ram").innerText = Math.floor(170 + Math.random()*40) + "MB";
+  } else {
+    document.getElementById("ram").innerText = "0MB";
+  }
+}, 1000);
+
+// =====================
+// TOAST
+// =====================
+var toastEl = document.getElementById("toast");
+
+function showToast(text){
+  if(!toastEl) return;
+  toastEl.innerText = text;
+  toastEl.style.opacity = "1";
+  toastEl.style.transform = "translateX(-50%) translateY(0px)";
+  setTimeout(function(){
+    toastEl.style.opacity = "0";
+    toastEl.style.transform = "translateX(-50%) translateY(10px)";
+  }, 1200);
+}
+
+// =====================
+// 🚀 OPEN GAME
+// =====================
+function openSelectedGame(){
+  beep();
+  if(currentGame === "ff"){
+    window.location.href = "freefire://";
+    setTimeout(function(){
+      window.location.href = "https://apps.apple.com/app/id1300146617";
+    }, 800);
+  } else {
+    window.location.href = "freefiremax://";
+    setTimeout(function(){
+      window.location.href = "https://apps.apple.com/app/id1480516829";
+    }, 800);
+  }
+}
+</script>
+
+</body></html>
